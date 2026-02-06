@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/55586cb8ce.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/scripts.js" defer></script>
+  </head>
+  <body>
+    <header id="header">
+      <form id="header-form">
+        <div id="search-container">
+          <h1 id="main-title">Notes</h1>
+          <div id="search-input">
+            <i class="fa-solid fa-magnifying-glass" id="search-icon"></i>
+            <input
+              type="text"
+              name="search"
+              placeholder="Busque por uma nota"
+            />
+          </div>
+          <button id="search-btn"><i class="fa-solid fa-x"></i></button>
+        </div>
+
+        <div id="buttons-container">
+          <button id="export-csv">
+            <i class="fa-solid fa-file-export"></i>
+          </button>
+
+          <button id="visualization">
+            <i class="fa-solid fa-border-all"></i>
+            <i class="fa-solid fa-table-list hide"></i>
+          </button>
+
+          <button id="mode-toggle">
+            <i class="fa-solid fa-moon"></i>
+            <i class="fa-solid fa-sun hide"></i>
+          </button>
+        </div>
+      </form>
+    </header>
+    <main id="main-container">
+      <form id="note-form">
+        <div id="note-form-inputs">
+          <input
+            type="text"
+            name="note-title"
+            placeholder="Título"
+            class="hide"
+          />
+          <input
+            type="text"
+            name="note-description"
+            placeholder="Crie uma nota..."
+          />
+        </div>
+        <button>
+          <i class="fa-solid fa-plus"></i>
+        </button>
+      </form>
+
+      <div id="notes-container">
+      </div>
+    </main>
+  </body>
+</html>
