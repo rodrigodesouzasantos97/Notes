@@ -5,8 +5,12 @@ const notesContainer = document.querySelector("#notes-container");
 const searchInput = document.querySelector("#search-container input");
 const searchBtn = document.querySelector("#search-btn");
 const exportCsvBtn = document.querySelector("#export-csv")
+const modeToggleBtn = document.querySelector("#mode-toggle")
+const moonModeIcon = document.querySelector("#mode-toggle .fa-moon")
+const sunModeIcon = document.querySelector("#mode-toggle .fa-sun")
 
 let wentInCreateNote = false;
+let lightMode = false;
 
 function showNotes() {
     cleanNotes();
@@ -224,6 +228,24 @@ function exportData() {
     element.click();
 }
 
+function toggleMode() {
+    document.documentElement.style.setProperty('--background-color', `${lightMode? '#242424' : '#ddd'}`);
+    document.documentElement.style.setProperty('--input-background-color', `${lightMode? '#ddd' : '#575757'}`);
+    document.documentElement.style.setProperty('--input-text-color', `${lightMode? '#242424' : '#ddd'}`);
+    document.documentElement.style.setProperty('--border-color', `${lightMode? '#ddd' : '#242424'}`);
+    document.documentElement.style.setProperty('--text-color', `${lightMode? '#ddd' : '#242424'}`);
+    document.documentElement.style.setProperty('--button-color', `${lightMode? '#ddd' : '#4e4e4e'}`);
+    document.documentElement.style.setProperty('--placeholder-color', `${lightMode? '#777' : '#cfcfcf'}`);
+    document.documentElement.style.setProperty('--hover-color', `${lightMode? '#fff' : '#000'}`);
+    document.documentElement.style.setProperty('--fixed-color', `${lightMode? '#444' : '#bebebe'}`);
+    document.documentElement.style.setProperty('--caret-color', `${lightMode? '#000' : '#fff'}`);
+
+    moonModeIcon.classList.toggle("hide");
+    sunModeIcon.classList.toggle("hide");
+    
+    lightMode = !lightMode;
+}
+
 document.addEventListener("click", (e) => {
     const elementId = e.target.id;
     toggleAddNoteTitle(elementId);
@@ -247,6 +269,10 @@ searchBtn.addEventListener("click", (e) => {
 
 exportCsvBtn.addEventListener("click", () => {
     exportData();
+});
+
+modeToggleBtn.addEventListener("click", () => {
+    toggleMode();
 });
 
 showNotes();
