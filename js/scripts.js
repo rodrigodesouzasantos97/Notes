@@ -78,13 +78,19 @@ function createNote(id, title, description, fixed) {
     const divNote = document.createElement("div");
     divNote.classList.add("note");
 
-    const h2 = document.createElement("h2");
-    divNote.appendChild(h2);
-    h2.innerText = title;
+    const titleElement = document.createElement("textarea");
+    titleElement.name = "noteTitle";
+    titleElement.maxLength = 42;
+    titleElement.classList.add("noteTitle");
+    divNote.appendChild(titleElement);
+    titleElement.innerText = title;
 
-    const p = document.createElement("p");
-    divNote.appendChild(p);
-    p.innerText = description;
+    const descriptionElement = document.createElement("textarea");
+    descriptionElement.name = "noteDescription";
+    descriptionElement.maxLength = 126;
+    descriptionElement.classList.add("noteDescription");
+    divNote.appendChild(descriptionElement);
+    descriptionElement.innerText = description;
 
     const divBtns = document.createElement("div");
     divBtns.classList.add("note-btns");
@@ -114,6 +120,16 @@ function createNote(id, title, description, fixed) {
     fixBtn.appendChild(thumbtackSlashIcon);
     divBtns.appendChild(fixBtn);
 
+    titleElement.addEventListener("blur", (e) => {
+        const newText = e.target.value;
+        editTitle(id, newText);
+    })
+
+    descriptionElement.addEventListener("blur", (e) => {
+        const newText = e.target.value;
+        editDescription(id, newText);
+    })
+
     deleteBtn.addEventListener("click", () => {
         deleteNote(id, divNote);
     });
@@ -133,6 +149,24 @@ function createNote(id, title, description, fixed) {
     });
 
     return divNote;
+}
+
+function editTitle(id, newText) {
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+    if (targetNote.title !== newText) targetNote.title = newText;
+
+    saveNotes(notes);
+}
+
+function editDescription(id, newText) {
+    const notes = getNotes();
+
+    const targetNote = notes.filter((note) => note.id === id)[0];
+    if (targetNote.description !== newText) targetNote.description = newText;
+
+    saveNotes(notes);
 }
 
 function toggleFixBtn(id) {
@@ -229,20 +263,20 @@ function exportData() {
 }
 
 function toggleMode() {
-    document.documentElement.style.setProperty('--background-color', `${lightMode? '#242424' : '#ddd'}`);
-    document.documentElement.style.setProperty('--input-background-color', `${lightMode? '#ddd' : '#575757'}`);
-    document.documentElement.style.setProperty('--input-text-color', `${lightMode? '#242424' : '#ddd'}`);
-    document.documentElement.style.setProperty('--border-color', `${lightMode? '#ddd' : '#242424'}`);
-    document.documentElement.style.setProperty('--text-color', `${lightMode? '#ddd' : '#242424'}`);
-    document.documentElement.style.setProperty('--button-color', `${lightMode? '#ddd' : '#4e4e4e'}`);
-    document.documentElement.style.setProperty('--placeholder-color', `${lightMode? '#777' : '#cfcfcf'}`);
-    document.documentElement.style.setProperty('--hover-color', `${lightMode? '#fff' : '#000'}`);
-    document.documentElement.style.setProperty('--fixed-color', `${lightMode? '#444' : '#bebebe'}`);
-    document.documentElement.style.setProperty('--caret-color', `${lightMode? '#000' : '#fff'}`);
+    document.documentElement.style.setProperty('--background-color', `${lightMode ? '#242424' : '#ddd'}`);
+    document.documentElement.style.setProperty('--input-background-color', `${lightMode ? '#ddd' : '#575757'}`);
+    document.documentElement.style.setProperty('--input-text-color', `${lightMode ? '#242424' : '#ddd'}`);
+    document.documentElement.style.setProperty('--border-color', `${lightMode ? '#ddd' : '#242424'}`);
+    document.documentElement.style.setProperty('--text-color', `${lightMode ? '#ddd' : '#242424'}`);
+    document.documentElement.style.setProperty('--button-color', `${lightMode ? '#ddd' : '#4e4e4e'}`);
+    document.documentElement.style.setProperty('--placeholder-color', `${lightMode ? '#777' : '#cfcfcf'}`);
+    document.documentElement.style.setProperty('--hover-color', `${lightMode ? '#fff' : '#000'}`);
+    document.documentElement.style.setProperty('--fixed-color', `${lightMode ? '#444' : '#bebebe'}`);
+    document.documentElement.style.setProperty('--caret-color', `${lightMode ? '#000' : '#fff'}`);
 
     moonModeIcon.classList.toggle("hide");
     sunModeIcon.classList.toggle("hide");
-    
+
     lightMode = !lightMode;
 }
 

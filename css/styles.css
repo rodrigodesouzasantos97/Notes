@@ -142,12 +142,20 @@ body .hide {
   opacity: 1;
 }
 
-.note h2 {
+.note textarea {
+  all: unset;
+  overflow: hidden;
+  resize: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.note .noteTitle {
   margin-bottom: 0.5rem;
 }
 
-.note p {
-  height: 80%;
+.note .noteDescription {
+  height: 75%;
 }
 
 .note-btns {
