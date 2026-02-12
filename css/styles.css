@@ -186,3 +186,39 @@ body .hide {
 .fixed {
   background-color: var(--fixed-color);
 }
+
+@media (max-width: 768px) {
+  input {
+    width: 500px;
+  }
+
+  #header {
+    padding: 1rem;
+    flex-direction: column;
+  }
+
+  #buttons-container {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (max-width: 425px) {
+  input {
+    width: 250px;
+  }
+
+  #header {
+    padding: 1rem 0;
+  }
+}
+
+@media (max-width: 375px) {
+  #main-title {
+    display: none;
+  }
+
+  #search-icon {
+    left: 8px;
+    top: 30%;
+  }
+}

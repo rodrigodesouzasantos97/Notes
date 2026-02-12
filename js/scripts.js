@@ -193,12 +193,12 @@ function deleteNote(id, element) {
 function duplicateNote(id) {
     const notes = getNotes();
 
-    const noteTarget = notes.filter((note) => note.id === id)[0];
+    const targetNote = notes.filter((note) => note.id === id)[0];
 
     const noteObject = {
         id: generateId(),
-        title: noteTarget.title,
-        description: noteTarget.description,
+        title: targetNote.title,
+        description: targetNote.description,
         fixed: false
     }
 
