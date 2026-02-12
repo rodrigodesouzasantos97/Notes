@@ -80,14 +80,14 @@ function createNote(id, title, description, fixed) {
 
     const titleElement = document.createElement("textarea");
     titleElement.name = "noteTitle";
-    titleElement.maxLength = 42;
+    titleElement.maxLength = 39;
     titleElement.classList.add("noteTitle");
     divNote.appendChild(titleElement);
     titleElement.innerText = title;
 
     const descriptionElement = document.createElement("textarea");
     descriptionElement.name = "noteDescription";
-    descriptionElement.maxLength = 126;
+    descriptionElement.maxLength = 150;
     descriptionElement.classList.add("noteDescription");
     divNote.appendChild(descriptionElement);
     descriptionElement.innerText = description;
@@ -264,13 +264,13 @@ function exportData() {
 
 function toggleMode() {
     document.documentElement.style.setProperty('--background-color', `${lightMode ? '#242424' : '#ddd'}`);
-    document.documentElement.style.setProperty('--input-background-color', `${lightMode ? '#ddd' : '#575757'}`);
+    document.documentElement.style.setProperty('--input-background-color', `${lightMode ? '#ddd' : '#242424'}`);
     document.documentElement.style.setProperty('--input-text-color', `${lightMode ? '#242424' : '#ddd'}`);
     document.documentElement.style.setProperty('--border-color', `${lightMode ? '#ddd' : '#242424'}`);
     document.documentElement.style.setProperty('--text-color', `${lightMode ? '#ddd' : '#242424'}`);
     document.documentElement.style.setProperty('--button-color', `${lightMode ? '#ddd' : '#4e4e4e'}`);
     document.documentElement.style.setProperty('--placeholder-color', `${lightMode ? '#777' : '#cfcfcf'}`);
-    document.documentElement.style.setProperty('--hover-color', `${lightMode ? '#fff' : '#000'}`);
+    document.documentElement.style.setProperty('--hover-color', `${lightMode ? '#fff' : '#242424'}`);
     document.documentElement.style.setProperty('--fixed-color', `${lightMode ? '#444' : '#bebebe'}`);
     document.documentElement.style.setProperty('--caret-color', `${lightMode ? '#000' : '#fff'}`);
 
